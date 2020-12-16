@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-
+ 
 const routesNotices = require('./routes/notices')
 const routesLogin = require('./routes/login')
 
