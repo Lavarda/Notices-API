@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
     render(categories) {
         return {
             id: categories.id,
