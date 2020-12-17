@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
  
 const routesNotices = require('./routes/notices')
-const routesLogin = require('./routes/login')
+const routesCategories = require('./routes/categories')
 
 require('./database/connection')
 require('events').EventEmitter.defaultMaxListeners = 5000;
@@ -16,6 +16,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(routesNotices)
-app.use(routesLogin)
+app.use(routesCategories)
 
 app.listen(PORT, HOST)
