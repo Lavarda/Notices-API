@@ -18,4 +18,4 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routesNotices)
 app.use(routesCategories)
 
-app.listen(PORT, HOST)
+app.listen(process.env.PORT || PORT, HOST)
