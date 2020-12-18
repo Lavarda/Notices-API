@@ -1,5 +1,4 @@
 const Yup = require('yup');
-const moment = require('moment');
 const { Sequelize, QueryTypes } = require("sequelize");
 
 const NoticesModel = require('../models/Notices')
@@ -51,7 +50,6 @@ module.exports = {
                 label,
             }
         })
-
 
         if ( category ) {
             await connection.query(`INSERT INTO notice_categories (categories_id, notice_id ) VALUES (${category.id}, ${notice_id})`, { type: QueryTypes.INSERT });          

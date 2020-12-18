@@ -1,9 +1,9 @@
 module.exports = {
     dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'root',
-    database: 'database_news_website',
+    host: process.env.API_HOST,
+    username: process.env.API_USERNAME,
+    password: process.env.API_PASSWORD,
+    database: process.env.API_DATABASE,
     define: {
         timestamps: true,
         underscored: true,
