@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors')
 
 dotenv.config();
- 
+  
 const routesNotices = require('./routes/notices')
 const routesCategories = require('./routes/categories')
 
