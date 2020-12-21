@@ -1,3 +1,3 @@
-import StackNavigator from './src/navigation/StackNavigator'
+import Routes from './src/navigation/StackNavigator'
 
-export default StackNavigator;
+export default Routes;

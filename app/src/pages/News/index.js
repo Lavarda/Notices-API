@@ -1,67 +1,73 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {
-  useState,
-  useEffect,
-} from 'react';
-import { Text } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import api from '../../utils/api'
 import { notices } from '../../constants/Url'
+import Loading from '../../components/Loading'
+import Card from '../../components/Card'
+import ModalSort from '../../modals/Sort'
 
 import {
   Container,
+  ContainerLoading,
 } from './style'
 
 class News extends React.Component {
 
   state = {
-    notices: []
+    notices: [],
+    loading: false,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getData()
   }
 
   async getData() {
-    fetch('https://news-website-cheesecake-lab.herokuapp.com/notices/list').then( res => {
+    this.setState({ loading: true })
+    await api.get(notices.list).then( res => {
       this.setState({
-        notices: res.value,
-      }, () => {
-        console.log(this.state.notices)
+        notices: res.data.value,
+        loading: false,
+      })
+    }).catch( err => {
+      console.warn("ERROR", err)
+      this.setState({
+        loading: false,
       })
     })
-    // const res = await api.get(notices.list)
   }
 
   render() {
+    console.log("MODAL", this.props.route.params.modal)
+    console.log("PROPS", this.props)
     return (
-        <Text> Teste </Text>
+        <Container>
+          {this.state.loading 
+            ? 
+              <ContainerLoading>
+                <Loading loading={this.state.loading} size="larger"/>
+              </ContainerLoading>
+            : 
+              <ScrollView>
+                {this.state.notices.map( (v,i) => {
+                  return (
+                      <Card 
+                        navigation={this.props.navigation}
+                        key={i}
+                        image={v.image_url}
+                        title={v.title}
+                        author={v.authors}
+                        date={v.date}
+                        content={v.content}
+                      />
+                  )
+                })}
+              </ScrollView>
+          }
+          <ModalSort modal={this.props.route.params.modal}></ModalSort>
+        </Container>
     )
   }
 }
-
-// const News = async () => {
-  
-//   const [ state, setState ] = useState([])
-//   const [ hasError, setHasError ] = useState(false)
-//   const [ loading, setLoading ] = useState(false)
-
-//   useEffect( async () => {
-//     setLoading(true)
-//     await api.get(notices.list).then( res => { 
-//       setState(res.data)
-//       setLoading(false)
-//     }).catch(err => {
-//       setHasError(true)
-//       setLoading(false)
-//     })
-//   }, [])
-
-//   return (
-//     <Container>
-//       <Text>Teste</Text>
-//       <StatusBar style="auto" />
-//     </Container>
-//   )
-// }
 
 export default News;

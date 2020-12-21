@@ -7,13 +7,16 @@ import {
     TextButton,
 } from './style'
 
-export const Header =() => {
+export const Header = ( props ) => {
     return(
         <Container>
             <Text> News </Text>
             <Button 
                 onPress={ () => { 
-                    console.log("TESTEe")
+                    props.navigation.setParams({
+                        modal: true,
+                    })
+                    console.log("MODAL OK", props.route.params.modal )
                 }}
             >
                 <TextButton> Sort </TextButton>
