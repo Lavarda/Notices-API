@@ -4,7 +4,7 @@ import api from '../../utils/api'
 import { notices } from '../../constants/Url'
 import Loading from '../../components/Loading'
 import Card from '../../components/Card'
-import ModalSort from '../../modals/Sort'
+// import ModalSort from '../../modals/Sort'
 
 import {
   Container,
@@ -59,12 +59,13 @@ class News extends React.Component {
                         author={v.authors}
                         date={v.date}
                         content={v.content}
+                        website={v.website}
                       />
                   )
                 })}
               </ScrollView>
           }
-          <ModalSort modal={this.props.route.params.modal}></ModalSort>
+          {/* <ModalSort modal={this.props.route.params.modal}></ModalSort> */}
         </Container>
     )
   }

@@ -1,6 +1,4 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
-import Loading from '../../components/Loading'
 
 import {
   Container,
@@ -8,20 +6,24 @@ import {
   Image,
   Content,
   ViewSecondary,
+  TextAuthor,
+  TextDate,
+  TextPublished,
 } from './style'
 
 const ShowContent = (props) => {
+  console.log("DATA", props.route.params.data)
   return (
         <Container>
             <Title>{props.route.params.data.title}</Title>
+            <ViewSecondary>
+              <TextAuthor>By {props.route.params.data.author}</TextAuthor>
+              <TextDate>Posted in {props.route.params.data.date}</TextDate>
+            </ViewSecondary>
             <Image source={props.route.params.data.image}></Image>
             <Content>{props.route.params.data.content}</Content>
-            <ViewSecondary>
-              <Text>{props.route.params.data.author}</Text>
-              <Text>{props.route.params.data.date}</Text>
-            </ViewSecondary>
+            <TextPublished>Published by {props.route.params.data.website}</TextPublished>
         </Container>
-
   )
 }
 

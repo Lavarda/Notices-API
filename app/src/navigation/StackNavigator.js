@@ -3,6 +3,7 @@ import NewsPage from '../pages/News';
 import ShowContent from '../pages/ShowContent';
 import { Header }  from '../components/Header'
 import { HeaderPrimary } from '../components/HeaderPrimary'
+import { StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +13,7 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
       <NavigationContainer>
+        <StatusBar />
         <Stack.Navigator
             initialRouteName="NewsPage"
             screenOptions={{ gestureEnabled: false }}

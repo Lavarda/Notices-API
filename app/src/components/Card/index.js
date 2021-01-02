@@ -29,7 +29,8 @@ const Card =(props) => {
                         image: props.image,
                         content: props.content,
                         author: props.author,
-                        date: props.date
+                        date: props.date,
+                        website: props.website,
                     }
                 })
             }
